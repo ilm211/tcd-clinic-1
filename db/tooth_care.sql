@@ -22,6 +22,28 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `password` varchar(240) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `permission` enum('user','operator','doctor') COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'user',
+  `is_active` tinyint(5) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `permission`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '$2y$10$fNfundFX.rzgSLoUD/AeiOwcujWFAWoAYysuEWAXvnhnbir7XWCLu', 'operator', 1, '2023-10-31 20:47:36', '2023-10-31 20:47:36');
+
 
 --
 -- Table structure for table `appointments`
@@ -165,27 +187,6 @@ INSERT INTO `treatments` (`id`, `name`, `description`, `treatment_fee`, `registr
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `email` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `password` varchar(240) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `permission` enum('user','operator','doctor') COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'user',
-  `is_active` tinyint(5) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `permission`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '$2y$10$fNfundFX.rzgSLoUD/AeiOwcujWFAWoAYysuEWAXvnhnbir7XWCLu', 'operator', 1, '2023-10-31 20:47:36', '2023-10-31 20:47:36');
 
 --
 -- Indexes for dumped tables
