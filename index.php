@@ -764,8 +764,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="login.php" class="text-gray-400 hover:text-blue-400 transition duration-300">
-                                    Admin Login
+                                <a href="app.php" class="text-gray-400 hover:text-blue-400 transition duration-300">
+                                    Admin
                                 </a>
                             </li>
                         </ul>
