@@ -49,7 +49,7 @@ $sm = AppManager::getSM();
     <!-- Page -->
     <link rel="stylesheet" href="<?= asset('assets/vendor/css/pages/page-auth.css') ?>" />
     <!-- Helpers -->
-    <script src="assets/vendor/js/helpers.js"></script>
+    <script src="<?= asset('assets/vendor/js/helpers.js') ?>"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -96,7 +96,7 @@ $sm = AppManager::getSM();
                                                         <mask id="mask-2" fill="white">
                                                             <use xlink:href="#path-1"></use>
                                                         </mask>
-                                                        <use fill="#aa0000ff" xlink:href="#path-1"></use>
+                                                        <use fill="#ff6969ff" xlink:href="#path-1"></use>
                                                         <g id="Path-3" mask="url(#mask-2)">
                                                             <use fill="#ed0202ff" xlink:href="#path-3"></use>
                                                             <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
@@ -109,7 +109,7 @@ $sm = AppManager::getSM();
                                                     <g
                                                         id="Triangle"
                                                         transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) ">
-                                                        <use fill="#696cff" xlink:href="#path-5"></use>
+                                                        <use fill="#f7006bff" xlink:href="#path-5"></use>
                                                         <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
                                                     </g>
                                                 </g>
@@ -193,15 +193,8 @@ $sm = AppManager::getSM();
     <script src="<?= asset('assets/vendor/js/menu.js') ?>"></script>
     <!-- endbuild -->
 
-    <!-- Vendors JS -->
-
     <!-- Main JS -->
     <script src="<?= asset('assets/js/main.js') ?>"></script>
-
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
