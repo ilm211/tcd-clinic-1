@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/../../config.php';
-
+require_once(__DIR__ . '/../../helpers/AppManager.php');
+$sm = AppManager::getSM();
 ?>
 
 
@@ -95,13 +96,13 @@ include __DIR__ . '/../../config.php';
                                                         <mask id="mask-2" fill="white">
                                                             <use xlink:href="#path-1"></use>
                                                         </mask>
-                                                        <use fill="#696cff" xlink:href="#path-1"></use>
+                                                        <use fill="#aa0000ff" xlink:href="#path-1"></use>
                                                         <g id="Path-3" mask="url(#mask-2)">
-                                                            <use fill="#696cff" xlink:href="#path-3"></use>
+                                                            <use fill="#ed0202ff" xlink:href="#path-3"></use>
                                                             <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
                                                         </g>
                                                         <g id="Path-4" mask="url(#mask-2)">
-                                                            <use fill="#696cff" xlink:href="#path-4"></use>
+                                                            <use fill="#da0000ff" xlink:href="#path-4"></use>
                                                             <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-4"></use>
                                                         </g>
                                                     </g>
@@ -116,12 +117,25 @@ include __DIR__ . '/../../config.php';
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder">ToothCare</span>
+                                <span class="app-brand-text demo text-body fw-bolder">TCD Clinic</span>
                             </a>
                         </div>
                         <!-- /Logo -->
                         <h4 class="mb-2">Welcome to TCD Clinic👋</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
+
+                        <?php
+                        // Display error message if exists
+                        $error = $sm->getAttribute('error');
+
+                        if ($error) {
+                            echo '<div class="alert alert-danger alert-dismissible" role="alert">';
+                            echo htmlspecialchars($error);
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                            $sm->removeAttribute('error');
+                        }
+                        ?>
 
                         <form id="formAuthentication" class="mb-3" action="<?= url('services/auth.php') ?>" method="POST">
                             <div class="mb-3">
@@ -135,12 +149,12 @@ include __DIR__ . '/../../config.php';
                                     autofocus />
                             </div>
                             <div class="mb-3 form-password-toggle">
-                                <div class="d-flex justify-content-between">
+                                <!-- <div class="d-flex justify-content-between">
                                     <label class="form-label" for="password">Password</label>
                                     <a href="auth-forgot-password-basic.html">
                                         <small>Forgot Password?</small>
                                     </a>
-                                </div>
+                                </div> -->
                                 <div class="input-group input-group-merge">
                                     <input
                                         type="password"
