@@ -2,6 +2,14 @@
 include __DIR__ . '/../../../config.php';
 include BASE_PATH . '/helpers/AppManager.php';
 
+$sm = AppManager::getSM();
+$userId = $sm->getAttribute("userId");
+$username = $sm->getAttribute("username");
+$permission = $sm->getAttribute("permission");
+
+if (!isset($userId) && empty($userId))
+    header('Location: ../auth/login.php');;
+
 // Extract the last filename from the URL
 $currentUrl = $_SERVER['SCRIPT_NAME'];
 $currentFilename = basename($currentUrl);  // e.g., "dashboard.php"
@@ -147,8 +155,8 @@ $currentFilename = basename($currentUrl);  // e.g., "dashboard.php"
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block"><?= $username ?? ''  ?></span>
+                                                    <small class="text-muted text-capitalize"><?= $permission ?? ''  ?></small>
                                                 </div>
                                             </div>
                                         </a>
