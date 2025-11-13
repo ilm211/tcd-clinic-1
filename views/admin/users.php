@@ -3,16 +3,29 @@ require_once('layouts/header.php');
 include BASE_PATH . '/models/User.php';
 
 
-
-// if (!isset($userId) && empty($userId)) dd('Access Denied...!');
-
 ?>
 
 
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Dashboard /</span> Users
+        <!-- Button trigger modal -->
+        <button
+            type="button"
+            class="btn btn-primary float-end"
+            data-bs-toggle="modal"
+            data-bs-target="#createNewUser">
+            Add New User
+        </button>
+    </h4>
+
     <div class="card">
-        <h5 class="card-header">Users</h5>
+        <div>
+            <h5 class="card-header">Users</h5>
+        </div>
+
         <div class="table-responsive text-nowrap">
             <table class="table table-striped">
                 <thead>
@@ -64,7 +77,81 @@ include BASE_PATH . '/models/User.php';
 </div>
 <!-- / Content -->
 
+<!-- Modal -->
+<div class="modal fade" id="createNewUser" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Add New User</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameWithTitle" class="form-label">User Name</label>
+                        <input
+                            type="text"
+                            required
+                            id="nameWithTitle"
+                            name="username"
+                            class="form-control"
+                            placeholder="Enter Name" />
+                    </div>
+                </div>
 
+                <div class="row gy-2">
+                    <div class="col orm-password-toggle">
+                        <label class="form-label" for="basic-default-password1">Password</label>
+                        <div class="input-group">
+                            <input
+                                type="password"
+                                required
+                                name="password"
+                                class="form-control"
+                                id="passwordInput"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                aria-describedby="basic-default-password1" />
+                            <span id="basic-default-password1" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                        </div>
+                    </div>
+                    <div class="col form-password-toggle">
+                        <label class="form-label" for="basic-default-password2">Confirm Password</label>
+                        <div class="input-group">
+                            <input
+                                type="password"
+                                required
+                                name="confirm_password"
+                                class="form-control"
+                                id="confirmPasswordInput"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                aria-describedby="basic-default-password2" />
+                            <span id="basic-default-password2" class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="mb-3">
+                        <label for="exampleFormControlSelect1" class="form-label">Role</label>
+                        <select class="form-select" id="permission" aria-label="Roles" name="permission" required>
+                            <option value="operator">Operator</option>
+                            <option value="doctor">Doctor</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" id="create">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 require_once('layouts/footer.php');
